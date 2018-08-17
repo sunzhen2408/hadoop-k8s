@@ -25,7 +25,7 @@ RUN mkdir -p ~/hdfs/namenode && \
     mkdir $HADOOP_HOME/logs
 
 COPY config/* /tmp/
-
+RUN ls 
 RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/hadoop-env.sh /usr/local/hadoop/etc/hadoop/hadoop-env.sh && \
     mv /tmp/hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \ 
@@ -34,13 +34,13 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
-    mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
-    mv /tmp/start-master-hadoop.sh $HADOOP_HOME/etc/hadoop/start-master-hadoop.sh
+    mv /tmp/run-wordcount.sh ~/run-wordcount.sh 
+   # mv /tmp/start-master-hadoop.sh $HADOOP_HOME/etc/hadoop/start-master-hadoop.sh
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
     chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh && \
-    chmod +x $HADOOP_HOME/etc/hadoop/start-master-hadoop.sh
+    chmod +x /tmp/start-master-hadoop.sh
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
