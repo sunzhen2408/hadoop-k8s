@@ -35,12 +35,12 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
     mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
-    mv /tmp/start-master-hadoop.sh ~/start-master-hadoop.sh
+    mv /tmp/start-master-hadoop.sh $HADOOP_HOME/etc/hadoop/start-master-hadoop.sh
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
     chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh && \
-    chmod +x $HADOOP_HOME/sbin/start-master-hadoop.sh
+    chmod +x $HADOOP_HOME/etc/hadoop/start-master-hadoop.sh
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
